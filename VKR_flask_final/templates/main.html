@@ -1,0 +1,75 @@
+<!doctype html>
+<style>
+from{
+    margin: auto;
+    width: 35%;
+}
+
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+
+<head>
+        <title>Прогнозирование ПРОЧНОСТИ КОМПОЗИТА ПРИ РАСТЯЖЕНИИ, МПа'</title>
+</head>
+
+<form action="{{url_for('main')}}" method="POST">
+    <fieldset>
+        <h2>Прогнозирование прочности при растяжении композита</h2>
+        <p>    
+        <legend>Введите параметры</legend>
+    <p>
+        <label for="matrix_filler">Введите Соотношение матрица-наполнитель, МПа</label>
+	    <input type="text" name="matrix_filler" required>
+    </p><p>
+	    <label for="density">Введите Плотность, кг/м3</label>
+	    <input type="text" name="density" required>
+    </p><p>
+	    <label for="elastic_modulus">Введите Модуль упругости, ГПа</label>
+	    <input type="text" name="elastic_modulus" required>
+    </p><p>
+	    <label for="hardener">Введите Количество отвердителя, м.%</label>
+	    <input type="text" name="hardener" required>
+    </p><p>
+        <label for="epoxies">Введите Содержание эпоксидных групп,%_2</label>
+	    <input type="text" name="epoxies" required>
+    </p><p>
+        <label for="temp">Введите Температура вспышки, С_2</label>
+	    <input type="text" name="temp" required>
+    </p><p>
+        <label for="surface_density">Введите Поверхностная плотность, г/м2</label>
+	    <input type="text" name="surface_density" required>
+    </p><p>
+        <label for="tensile_modulus">Введите Модуль упругости при растяжении, ГПа</label>
+	    <input type="text" name="tensile_modulus" required>
+    </p><p>
+        <label for="resin_consumption">Введите Потребление смолы, г/м2</label>
+	    <input type="text" name="resin_consumption" required>
+    </p><p>
+        <label for="patch_angle">Введите Угол нашивки, град</label>
+	    <input type="number" name="patch_angle" min='0' max='90' step='1' required>
+    </p><p>
+        <label for="patch_step">Введите Шаг нашивки</label>
+	    <input type="text" name="patch_step" required>
+    </p><p>
+        <label for="patch_density">Введите Плотность нашивки</label>
+	    <input type="text" name="patch_density" required>
+	</p>
+    <br>
+    <br>
+    <input type="submit">
+    </fieldset>
+</form>
+
+<div class="result" align="center">
+    {% if result %}
+        <br>
+        <p style="font-size: 50px">
+        Прогнозирование прочности композита при растяжении, МПа
+        </p>
+        <p style="font-size: 50px"> {{result}}</p>
+    {% endif %}
+</div>
